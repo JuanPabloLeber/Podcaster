@@ -1,9 +1,13 @@
+import NavBar from './components/navBar/NavBar'
+import PodcastCollection from './components/podcastCollection/PodcastCollection'
+
 import './App.css'
 
 function App() {
   return (
     <>
-      <h1>Podcaster</h1>
+      <NavBar />
+      <PodcastCollection />
     </>
   )
 }

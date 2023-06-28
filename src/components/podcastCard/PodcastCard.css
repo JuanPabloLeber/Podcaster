@@ -1,0 +1,30 @@
+.podcast-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 260px; 
+  border: 1px solid rgba(212, 212, 212, 0.5);
+  box-shadow: -8px 8px 8px rgba(128, 128, 128, 0.50), 8px 8px 8px rgba(128, 128, 128, 0.50);
+}
+
+.podcast-card > img {
+  position: absolute;
+  transform: translate(0, -40%);
+  border-radius: 100%;
+}
+
+.card-info {
+  margin-top: 45%;
+  text-align: center;
+}
+
+.card-info > h1 {
+  font-size: 1.4rem;
+}
+
+.card-info > h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(102, 102, 102);
+}
+

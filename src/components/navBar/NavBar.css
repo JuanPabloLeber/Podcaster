@@ -1,0 +1,14 @@
+.navbar {
+background-color: rgb(232, 232, 232);
+border-bottom: 1px solid rgb(177, 177, 177);
+box-sizing: border-box;
+height: 50px;
+display: flex;
+align-items: center;
+width: 100%;
+}
+
+.nav-title {
+  color: rgb(0, 119, 255);
+  margin-left: 15px;
+}
