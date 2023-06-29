@@ -1,0 +1,14 @@
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 210px;
+  align-self: flex-end;
+}
+
+.elements-counter {
+  background-color: blue;
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
+  color: white;
+  margin-right: 10px;
+}
