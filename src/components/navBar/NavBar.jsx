@@ -1,9 +1,12 @@
-import "./NavBar.css"
+import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 function NavBar() {
   return (
     <div className="navbar">
-      <h1 className="nav-title">Podcaster</h1>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <h1 className="nav-title">Podcaster</h1>
+      </Link>
     </div>
   )
 }

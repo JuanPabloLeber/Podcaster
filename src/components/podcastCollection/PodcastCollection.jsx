@@ -5,6 +5,7 @@ import PodcastCard from '../podcastCard/PodcastCard'
 import { getHundredPodcasts } from '../../services/podcasts'
 
 import './PodcastCollection.css'
+import { Link } from 'react-router-dom'
 
 function PodcastCollection() {
   const [podcastData, setPodcastData] = useState([])
@@ -13,8 +14,14 @@ function PodcastCollection() {
 
   useEffect(() => {
     async function updatePodcastData() {
-      const podcasts = await getHundredPodcasts()
-      setPodcastData(podcasts.feed.entry)
+      if (updateLocalStorage()) {
+        const podcasts = await getHundredPodcasts()
+        setPodcastData(podcasts.feed.entry)
+        localStorage.setItem('podcastsLastUpdated', new Date())
+        localStorage.setItem('podcasts', JSON.stringify(podcasts))
+      } else {
+        setPodcastData(JSON.parse(localStorage.getItem('podcasts')).feed.entry)
+      }
     }
     updatePodcastData()
   }, [])
@@ -22,6 +29,19 @@ function PodcastCollection() {
   useEffect(() => {
     showPodcasts()
   }, [filter, podcastData])
+
+  function updateLocalStorage() {
+    if (!localStorage.getItem('podcastsLastUpdated')) {
+      return true
+    }
+    if (
+      new Date() - Date.parse(localStorage.getItem('podcastsLastUpdated')) <
+      86400
+    ) {
+      return false
+    }
+    return true
+  }
 
   function filterPodcasts(data) {
     return data.filter((podcast) => {
@@ -35,12 +55,17 @@ function PodcastCollection() {
   function mapPodcasts(data) {
     return data.map((podcast) => {
       return (
-        <PodcastCard
+        <Link
+          to={`podcast/${podcast.id.attributes['im:id']}`}
           key={podcast.id.attributes['im:id']}
-          image={podcast['im:image'][2].label}
-          name={podcast['im:name'].label}
-          artist={podcast['im:artist'].label}
-        />
+          style={{ textDecoration: 'none' }}
+        >
+          <PodcastCard
+            image={podcast['im:image'][2].label}
+            name={podcast['im:name'].label}
+            artist={podcast['im:artist'].label}
+          />
+        </Link>
       )
     })
   }

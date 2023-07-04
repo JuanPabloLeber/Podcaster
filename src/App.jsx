@@ -1,4 +1,3 @@
-import NavBar from './components/navBar/NavBar'
 import PodcastCollection from './components/podcastCollection/PodcastCollection'
 
 import './App.css'
@@ -8,7 +7,6 @@ import PodcastFilter from './components/podcastFilter/PodcastFilter'
 function App() {
   return (
     <>
-      <NavBar />
       <FilterContextProvider>
         <div className="container">
           <PodcastFilter />
