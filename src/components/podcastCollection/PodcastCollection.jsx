@@ -14,7 +14,7 @@ function PodcastCollection() {
 
   useEffect(() => {
     async function updatePodcastData() {
-      if (updateLocalStorage()) {
+      if (checkLocalStorage()) {
         const podcasts = await getHundredPodcasts()
         setPodcastData(podcasts.feed.entry)
         localStorage.setItem('podcastsLastUpdated', new Date())
@@ -30,7 +30,7 @@ function PodcastCollection() {
     showPodcasts()
   }, [filter, podcastData])
 
-  function updateLocalStorage() {
+  function checkLocalStorage() {
     if (!localStorage.getItem('podcastsLastUpdated')) {
       return true
     }
@@ -40,7 +40,7 @@ function PodcastCollection() {
     ) {
       return false
     }
-    return true
+    return false
   }
 
   function filterPodcasts(data) {
