@@ -6,6 +6,7 @@ import { PodcastsContext } from '../contexts/podcastsContext'
 
 import { PodcastDetailContext } from '../contexts/podcastDetailContext'
 import './Podcast.css'
+import PodcastList from '../components/podcastDetail/podcastList/PodcastList'
 function Podcast() {
   const { podcastData, updatePodcast } = useContext(PodcastDetailContext)
   const { podcastsData } = useContext(PodcastsContext)
@@ -33,6 +34,7 @@ function Podcast() {
             <Header
               podcastEpisodes={podcastData.podcastInfo.results[0].trackCount}
             />
+            <PodcastList podcastEpisodes={podcastData.podcastInfo.results} />
           </section>
           {/* <pre style={{ textWrap: 'wrap' }}>
             {JSON.stringify(podcastData, null, 4)}

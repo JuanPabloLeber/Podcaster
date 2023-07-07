@@ -1,0 +1,27 @@
+.podcast-list-container {
+  margin-top: 50px;
+  border: 1px solid rgba(212, 212, 212, 0.5);
+  box-shadow: -8px 8px 8px rgba(128, 128, 128, 0.50), 8px 8px 8px rgba(128, 128, 128, 0.50);
+}
+
+.podcast-element {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.podcast-element>div {
+  display: flex;
+  justify-content: space-between;
+  min-width: 200px;
+}
+
+.podcast-element:first-child {
+  font-weight: 800;
+  border-bottom: 1px solid black;
+}
+
+.podcast-element:nth-child(even) {
+  background-color: rgb(239, 239, 239);
+}
