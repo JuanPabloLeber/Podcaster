@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './PodcastList.css'
 function PodcastList({ podcastEpisodes }) {
   function generateList() {
@@ -7,7 +8,9 @@ function PodcastList({ podcastEpisodes }) {
       const time = milliToMin(podcast.trackTimeMillis)
       return (
         <div className="podcast-element" key={podcast.trackId}>
-          <p>{podcast.trackName}</p>
+          <Link to={`episode/${podcast.trackId}`} state={{ podcast }}>
+            <p>{podcast.trackName}</p>
+          </Link>
           <div>
             <p>{date}</p>
             <p>{time}</p>

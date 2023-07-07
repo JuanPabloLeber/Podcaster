@@ -1,0 +1,6 @@
+.episode-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50px;
+  column-gap: 100px;
+}

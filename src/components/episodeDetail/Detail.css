@@ -1,0 +1,7 @@
+  .detail-container {
+    padding: 15px;
+    border: 1px solid rgba(212, 212, 212, 0.5);
+    box-shadow: -8px 8px 8px rgba(128, 128, 128, 0.50),
+      8px 8px 8px rgba(128, 128, 128, 0.50);
+    max-width: 700px;
+  }

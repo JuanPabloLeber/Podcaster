@@ -1,12 +1,12 @@
 import { useEffect, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Header from '../components/podcastDetail/header/Header'
-import LeftBar from '../components/podcastDetail/leftBar/LeftBar'
-import { PodcastsContext } from '../contexts/podcastsContext'
+import Header from '../../components/podcastDetail/header/Header'
+import LeftBar from '../../components/podcastDetail/leftBar/LeftBar'
+import { PodcastsContext } from '../../contexts/podcastsContext'
 
-import { PodcastDetailContext } from '../contexts/podcastDetailContext'
+import { PodcastDetailContext } from '../../contexts/podcastDetailContext'
 import './Podcast.css'
-import PodcastList from '../components/podcastDetail/podcastList/PodcastList'
+import PodcastList from '../../components/podcastDetail/podcastList/PodcastList'
 function Podcast() {
   const { podcastData, updatePodcast } = useContext(PodcastDetailContext)
   const { podcastsData } = useContext(PodcastsContext)
@@ -14,19 +14,23 @@ function Podcast() {
   const { podcastId } = useParams()
 
   useEffect(() => {
-    function refresh() {
-      updatePodcast({ podcastId })
-      const podcast = podcastsData.filter((podcast) => {
-        return podcast.id.attributes['im:id'] === podcastId
-      })
-
-      setFilteredPodcast(podcast[0])
-    }
-    refresh()
+    updatePodcast({ podcastId })
   }, [])
 
+  useEffect(() => {
+    const podcast = podcastsData.filter((podcast) => {
+      return podcast.id.attributes['im:id'] === podcastId
+    })
+
+    setFilteredPodcast(podcast[0])
+  }, [podcastsData])
+
   function components() {
-    if (podcastData !== null) {
+    if (
+      filteredPodcast !== null &&
+      filteredPodcast !== undefined &&
+      podcastData !== null
+    ) {
       return (
         <div className="podcast-detail-container">
           <LeftBar filteredPodcast={filteredPodcast} />
