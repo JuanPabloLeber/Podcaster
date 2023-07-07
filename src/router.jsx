@@ -2,11 +2,16 @@ import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import AppLayout from './layout/AppLayout'
 import Podcast from './pages/Podcast'
-
+import PodcastDetailContextProvider from './contexts/podcastDetailContext'
+import PodcastsContextProvider from './contexts/podcastsContext'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />,
+    element: (
+      <PodcastsContextProvider>
+        <AppLayout />
+      </PodcastsContextProvider>
+    ),
     children: [
       {
         path: '/',
@@ -14,7 +19,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'podcast/:podcastId',
-        element: <Podcast />
+        element: (
+          <PodcastDetailContextProvider>
+            <Podcast />
+          </PodcastDetailContextProvider>
+        )
       }
     ]
   }

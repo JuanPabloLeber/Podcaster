@@ -8,8 +8,11 @@ export async function getHundredPodcasts() {
 
 export async function getPodcastById(podcastId) {
   const data = await fetch(
-    `https://cors-anywhere.herokuapp.com/https://itunes.apple.com/lookup?id=${podcastId}`
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(
+      `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode`
+    )}`
   )
+
   const jsonData = await data.json()
-  return jsonData.results[0]
+  return jsonData
 }

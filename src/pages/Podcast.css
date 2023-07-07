@@ -1,0 +1,5 @@
+.podcast-detail-container {
+  display: flex;
+  margin-top: 50px;
+  column-gap: 100px;
+}
