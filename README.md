@@ -2,6 +2,10 @@
 
 A podcast app using iTunes API
 
+## Install
+
+npm install
+
 ## Use
 
 | Dev | Production |
