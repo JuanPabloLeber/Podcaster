@@ -8,6 +8,6 @@ npm install
 
 ## Use
 
-| Dev | Production |
-|--|--|
-| npm run noMinify | npm run build |
+| Dev | DevBuild | Production |
+|--|--|--|
+|npm run dev | npm run noMinify | npm run build |
